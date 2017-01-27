@@ -1,0 +1,27 @@
+---
+- name: check if phantomjs already exists
+  stat: path=/usr/local/bin/phantomjs
+  register: phantomjs_stat
+
+- name: download phantomjs
+  get_url: url={{ phantomjs_url }}
+           dest=/tmp/phantomjs-{{ phantomjs_version }}.tar.bz2
+  when: phantomjs_stat.stat.exists == False
+
+- name: unarchive phantomjs
+  unarchive: src=/tmp/phantomjs-{{ phantomjs_version }}.tar.bz2
+             dest=/usr/local/lib
+             copy=no
+  sudo: yes
+  when: phantomjs_stat.stat.exists == False
+
+- name: symlink the phantomjs executable
+  file: src=/usr/local/lib/phantomjs-{{ phantomjs_version }}/bin/phantomjs
+        dest=/usr/local/bin/phantomjs state=link force=yes
+  sudo: yes
+  when: phantomjs_stat.stat.exists == False
+
+- name: configuring locale to avoid warnings
+  template: src={{ playbook_dir }}/templates/locale dest=/etc/default/locale
+  sudo: yes
+  when: phantomjs_stat.stat.exists == False

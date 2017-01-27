@@ -1,0 +1,2 @@
+phantomjs_version: 1.9.8-linux-x86_64
+phantomjs_url: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-{{ phantomjs_version }}.tar.bz2

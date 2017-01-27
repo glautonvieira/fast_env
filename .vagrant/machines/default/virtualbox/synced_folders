@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/dev":{"guestpath":"/home/vagrant/dev","hostpath":"/Users/glauton/workspace","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/glauton/workspace/fast-env","disabled":false,"__vagrantfile":true}}}

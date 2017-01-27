@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+set -e
+
+if command -v brew >/dev/null; then
+  brew update
+  brew install caskroom/cask/brew-cask
+  # brew cask install virtualbox
+  brew cask install vagrant
+  brew install ansible
+  vagrant plugin install vagrant-vbguest
+else
+  echo "If you're on a Mac, Homebrew could not be detected. Follow the steps in http://brew.sh to install it. Afterwards run this script again."
+  echo ""
+  echo "If you're on a Linux, you need to install the dependencies yourself because they depend on your distro's package manager. Install:"
+  echo "  virtualbox    (check https://www.virtualbox.org/wiki/Linux_Downloads)"
+  echo "  vagrant       (check https://www.vagrantup.com/downloads.html)"
+  echo "  ansible       (check http://docs.ansible.com/ansible/intro_installation.html)"
+  echo ""
+  echo "  And afterwards run:"
+  echo "    vagrant plugin install vagrant-vbguest"
+fi

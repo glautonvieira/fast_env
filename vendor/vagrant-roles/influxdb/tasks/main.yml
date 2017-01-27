@@ -1,0 +1,30 @@
+---
+- name: add influxdb repo key
+  apt_key: url=https://repos.influxdata.com/influxdb.key state=present
+  become: yes
+
+- name: install dependencies
+  apt: pkg=apt-transport-https state=latest
+  become: yes
+
+- name: add influxdb repo
+  apt_repository: repo="deb https://repos.influxdata.com/debian jessie stable" state=present
+  become: yes
+
+- name: install curl
+  apt: pkg=curl state=latest
+  become: yes
+
+- name: install influxdb
+  apt: pkg=influxdb state=latest
+  become: yes
+
+- name: start influxdb
+  service: name=influxdb state=started
+  become: yes
+
+- name: create db
+  uri:
+    url: http://localhost:8086/query
+    method: POST
+    body: "q=CREATE DATABASE {{ db_name | default ('vagrant') }}"

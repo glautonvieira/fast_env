@@ -1,0 +1,37 @@
+- name: install rbenv
+  apt: name=rbenv state=latest
+  become: yes
+
+- name: install build-essential
+  apt: name=build-essential state=latest
+  become: yes
+
+- name: init rbenv
+  lineinfile:
+    dest: ~/.bashrc
+    regexp: "rbenv init -"
+    line: 'eval "$(rbenv init -)"'
+    create: yes
+
+- name: disable ri and rdoc installation
+  lineinfile:
+    dest: ~/.gemrc
+    regexp: "gem: --no-document"
+    line: "gem: --no-document"
+    create: yes
+
+- name: install ruby-build
+  git: repo=https://github.com/sstephenson/ruby-build.git
+       dest=~/.rbenv/plugins/ruby-build
+
+- name: install the default ruby
+  shell: rbenv install --skip-existing {{ rbenv_default_ruby }}
+
+- name: set the default ruby
+  shell: rbenv global {{ rbenv_default_ruby }}
+
+- name: install bundler
+  shell: rbenv exec gem install bundler
+
+- name: rebuild shims
+  shell: rbenv rehash

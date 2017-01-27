@@ -1,0 +1,19 @@
+- name: installs git
+  apt: pkg=git state=installed
+  become: yes
+
+- name: copy .gitconfig
+  copy: src=~/.gitconfig dest=~/.gitconfig
+
+- name: copy public ssh key
+  copy: src=~/.ssh/id_rsa.pub dest=~/.ssh/id_rsa.pub
+
+- name: copy private ssh key
+  copy: src=~/.ssh/id_rsa dest=~/.ssh/id_rsa mode=0600
+
+- name: add github.com as a know SSH host
+  lineinfile:
+    dest: ~/.ssh/known_hosts
+    create: yes
+    line: ssh-keyscan -H github.com 
+    regexp: "^github.com"

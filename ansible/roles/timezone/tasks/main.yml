@@ -1,0 +1,2 @@
+- name: change time zone
+  command: timedatectl set-timezone America/Sao_Paulo

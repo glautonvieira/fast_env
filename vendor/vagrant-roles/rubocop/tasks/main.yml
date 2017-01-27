@@ -1,0 +1,2 @@
+- name: copy .rubocop.yml to user home
+  copy: src=rubocop.yml dest=~/.rubocop.yml

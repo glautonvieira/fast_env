@@ -1,0 +1,14 @@
+---
+- locale_gen: name=en_US.UTF-8 state=present
+- locale_gen: name=pt_BR.UTF-8 state=present
+
+- name: avoid import language from client ssh
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: 'AcceptEnv LANG LC_*'
+    line: "#AcceptEnv LANG LC_*"
+  register: result
+
+- name: restart ssh
+  service: name=ssh state=restarted
+  when: result.changed

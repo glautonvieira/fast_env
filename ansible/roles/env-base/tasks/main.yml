@@ -1,0 +1,27 @@
+---
+- name: cloning {{ app_name }} project
+  git: repo={{ git_clone_url }} dest={{ app_path }} update=no accept_hostkey=true
+
+- name: copying {{ app_name }} database configuration files
+  template: src={{ playbook_dir }}/templates/{{ item }}.yml.j2 dest={{ config_path }}/{{ item }}.yml
+  with_items: configs_to_copy
+  when: copy_config_files
+
+- name: install ruby and gems for {{ app_name }}
+  shell: '{{ item }}'
+  args:
+    chdir: '{{ app_path }}'
+  with_items:
+    - rbenv install --skip-existing
+    - rbenv exec gem install bundler
+    - rbenv exec bundle install
+
+- name: install rubocop for {{ app_name }}
+  shell: '{{ item }}'
+  args:
+    chdir: '{{ app_path }}'
+  with_items:
+    - rbenv exec gem install rubocop
+    - rbenv exec gem install rubocop-rspec
+  when: rubocop_enabled
+  

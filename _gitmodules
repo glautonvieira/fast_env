@@ -1,0 +1,3 @@
+[submodule "vendor/vagrant-roles"]
+	path = vendor/vagrant-roles
+	url = git@github.com:glautonvieira/ecommerce_flow.git

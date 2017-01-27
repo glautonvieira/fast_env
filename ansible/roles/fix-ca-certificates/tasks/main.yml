@@ -1,0 +1,22 @@
+- name: download ca-certificates deb pkg
+  get_url:
+    url: http://snapshot.debian.org/archive/debian/20141020T103752Z/pool/main/c/ca-certificates/ca-certificates_20141019_all.deb
+    dest: /home/vagrant/ca-certificates_20141019_all.deb
+
+- name: downgrade ca-certificates
+  apt: deb=/home/vagrant/ca-certificates_20141019_all.deb
+
+- name: enable thawte premium certificates
+  lineinfile:
+    dest: /etc/ca-certificates.conf
+    regexp: '!mozilla/Thawte_Premium_Server_CA.crt'
+    line: 'mozilla/Thawte_Premium_Server_CA.crt'
+
+- name: enable thawte server certificates
+  lineinfile:
+    dest: /etc/ca-certificates.conf
+    regexp: '!mozilla/Thawte_Server_CA.crt'
+    line: 'mozilla/Thawte_Server_CA.crt'
+
+- name: update ca certificates
+  command: update-ca-certificates

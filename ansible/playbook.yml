@@ -1,0 +1,35 @@
+---
+- hosts: all
+  roles:
+    - role: apt-update
+
+    - role: language
+      sudo: True
+
+    - role: timezone
+      sudo: True
+
+    - role: fix-ca-certificates
+      sudo: True
+
+    - role: phantomjs
+
+    - role: nodejs
+
+    - role: git
+
+    - role: ruby-deps
+
+    - role: rbenv
+
+    - role: rubocop
+
+    - role: env-base
+      app_name: yousebots-skeleton 
+      copy_config_files: false
+      configure_database: false
+
+    - role: env-base
+      app_name: yousebots-guide 
+      copy_config_files: false
+      configure_database: false

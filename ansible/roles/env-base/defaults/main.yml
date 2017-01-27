@@ -1,0 +1,7 @@
+env_core_based: false
+config_path: '{{ app_path }}/config'
+copy_config_files: yes
+rubocop_enabled: yes
+environments:
+  - test
+  - development

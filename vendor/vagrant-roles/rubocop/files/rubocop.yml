@@ -1,0 +1,33 @@
+#require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'Rakefile'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+
+Style/Documentation:
+  Exclude:
+    - 'app/**/*'
+    - 'spec/**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/**/*'
+
+Style/WordArray:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+Style/SignalException:
+  Enabled: false
+
+Performance/TimesMap:
+  Enabled: false

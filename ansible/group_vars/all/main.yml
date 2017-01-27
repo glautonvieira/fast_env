@@ -1,0 +1,5 @@
+---
+  apps_path: /home/vagrant/dev
+  app_path: '{{ apps_path }}/{{ app_name }}'
+  development_database: env_development
+  git_clone_url: git@github.com:youse-seguradora/{{ app_name }}.git
