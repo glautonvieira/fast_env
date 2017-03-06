@@ -36,7 +36,7 @@ vagrant provision
 
 After that, Vagrant will create a new VM, configure it, and ...
 
-Done! Do you have a development environment with facilities for automated testing installed!
+Done! You have a development environment set up for automated testing installed!
 
 
 Ansible install the following packages:
