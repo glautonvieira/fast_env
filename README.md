@@ -19,6 +19,9 @@ Clone this project using the 'flag --recursive` to the sub-modules are also clon
 
 `` 
 git clone --recursive git@github.com: glautonvieira / fast_env
+`` 
+
+`` 
 cd fast_env
 `` 
 
