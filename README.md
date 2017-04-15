@@ -1,15 +1,15 @@
 Creating development environment with Vagrant and Ansible
 =====================================
 
-This project aims to provide a development environment by installing dependencies for fast and automated way using the [Ansible] (http://www.ansible.com/).
+This project aims to provide a development environment by installing dependencies for fast and automated way using the [Ansible](http://www.ansible.com/).
 
 All works on the virtual machine Debian 64-bit
 
 Download and install:
 ------------
-1. [Vagrant 1.8.1] (https://www.vagrantup.com/docs/installation/)
-2. [VirtualBox 5:16] (https://www.virtualbox.org/wiki/Downloads)
-3. [Ansible 2.1.2] (http://docs.ansible.com/ansible/intro_installation.html)
+1. [Vagrant 1.8.1](https://www.vagrantup.com/docs/installation/)
+2. [VirtualBox 5:16](https://www.virtualbox.org/wiki/Downloads)
+3. [Ansible 2.1.2](http://docs.ansible.com/ansible/intro_installation.html)
 
 
 running
@@ -62,5 +62,5 @@ git submodule update
 
 VM configuration
 ----------------
-To learn more about the VM configuration options, see the documents in [Vagrant] (http://docs.vagrantup.com/v2/virtualbox/configuration.html)
+To learn more about the VM configuration options, see the documents in [Vagrant](http://docs.vagrantup.com/v2/virtualbox/configuration.html)
 # fast_env
